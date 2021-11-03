@@ -1,5 +1,6 @@
 package fun.baozi.consumerdemo;
 
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
@@ -15,6 +16,7 @@ import java.util.List;
  * @since 2021-11-02
  */
 @RestController
+@Retry(name = "retryBackendA")
 public class UseHelloController {
     @Autowired
     DiscoveryClient discoveryClient;
